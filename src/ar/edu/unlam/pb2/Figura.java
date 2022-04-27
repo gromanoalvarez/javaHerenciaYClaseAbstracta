@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2;
 
-public class Figura {
+public abstract class Figura {
 	private String color;
 	
 	public Figura(String color) {
@@ -13,4 +13,6 @@ public class Figura {
 	}
 	
 
+	public abstract Double calcularArea();
+	public abstract Double calcularPerimetro();
 }

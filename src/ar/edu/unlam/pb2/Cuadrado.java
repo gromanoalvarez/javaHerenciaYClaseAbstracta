@@ -6,10 +6,12 @@ public class Cuadrado extends Figura {
 	private Integer lado;
 	private Double resultado;
 
-	public Cuadrado(String color) {
+	public Cuadrado(String color, Integer lado) {
 		super(color);
+		this.lado = lado;
 	}
 	
+	/*
 	public Double area(Integer lado) {
 		return Math.pow(lado, 2);
 	}
@@ -18,5 +20,15 @@ public class Cuadrado extends Figura {
 		resultado = (double) (lado*4);
 		return resultado;
 	}
-
+	*/
+	
+	@Override
+	public  Double calcularArea() {
+		return Math.pow(lado, 2);
+	}
+	@Override
+	public  Double calcularPerimetro() {
+		resultado = (double) (lado*4);
+		return resultado;
+	}
 }
