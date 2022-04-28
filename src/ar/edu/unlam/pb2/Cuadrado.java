@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2;
 
-public class Cuadrado extends Figura {
+public class Cuadrado extends Figura implements Imprimible {
 
 	private String color;
 	private Integer lado;
@@ -22,13 +22,23 @@ public class Cuadrado extends Figura {
 	}
 	*/
 	
-	@Override
+	@Override  //OBLIGATORIO POR ABSTRAC
 	public  Double calcularArea() {
 		return Math.pow(lado, 2);
 	}
-	@Override
+	@Override//OBLIGATORIO POR ABSTRAC
 	public  Double calcularPerimetro() {
 		resultado = (double) (lado*4);
 		return resultado;
+	}
+	
+
+	public String getColor() {
+		return color;
+	}
+
+	@Override //OBLIGATORIA PRQUE IMPLEMENTO LA INTERFAZ
+	public void imprimir() {
+			System.out.println("IMPRIMO UN CUADRADO DE COLOR " + getColor() );		
 	}
 }

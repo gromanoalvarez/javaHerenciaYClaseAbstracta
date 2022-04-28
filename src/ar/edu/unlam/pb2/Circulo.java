@@ -33,4 +33,8 @@ public class Circulo extends Figura {
 		resultado = (2*Math.PI*radio);
 		return resultado;
 	}
+	
+	public void nada() {
+		
+	}
 }

@@ -79,5 +79,34 @@ public class FiguraTest {
 		
 		assertEquals(RESULTADO_ESPERADO, miFigura.calcularPerimetro(), 0.01);
 	}
+	
+	@Test //Practica de POLIMORFISMO
+	public void queAlPonerDosCirculosEnlistaDeContenedoraLosReconozca() {
+		Figura f = new Circulo("rojo", 10);
+		Cuadrado r1 = new Cuadrado("turquesa", 2);
+		Circulo c2 = new Circulo("azul", 5);
+		Contenedora c = new Contenedora();
+		
+		//c.agregarFigura(f);
+		//Asignacion POLIMORFICA guardar un Circulo nuevo en una Figura
+		//si hago f. me salen solo los metodos de una FIGURA
+		
+		//Para que reconozca a f como Circulo debo castearlo
+		//System.out.println(f.toString());
+		
+		f=r1; //guardo un Cuadrado dentro de la Figura
+		//System.out.println(f.toString());
+		
+		f=c2;  //guardo un Circulo dentro de la Figura
+		//System.out.println(f.toString());
+		
+		c.agregarFigura(f);
+		c.agregarFigura(c2);
+		c.agregarFigura(r1);
+		
+		Integer valorEsperado = 2;
+		assertEquals(valorEsperado, c.contarCirculos());
+		
+	}
 
 }
