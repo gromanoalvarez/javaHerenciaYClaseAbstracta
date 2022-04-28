@@ -82,30 +82,37 @@ public class FiguraTest {
 	
 	@Test //Practica de POLIMORFISMO
 	public void queAlPonerDosCirculosEnlistaDeContenedoraLosReconozca() {
-		Figura f = new Circulo("rojo", 10);
-		Cuadrado r1 = new Cuadrado("turquesa", 2);
-		Circulo c2 = new Circulo("azul", 5);
-		Contenedora c = new Contenedora();
+		Figura figuraNueva = new Circulo("rojo", 10);
+		Cuadrado primerCuadrado = new Cuadrado("turquesa", 2);
+		Circulo primerCirculo = new Circulo("azul", 5);
+		Contenedora nuevoContenedor = new Contenedora();		
 		
-		//c.agregarFigura(f);
-		//Asignacion POLIMORFICA guardar un Circulo nuevo en una Figura
-		//si hago f. me salen solo los metodos de una FIGURA
+		//ASIGNACION POLIMORFICA, DENTRO DE UN PADRE PUEDO GUARDAR SU HIJO
+		figuraNueva = primerCuadrado; //A) guardo un Cuadrado HIJO dentro de la Figura PADRE
+		//si hago figuraNueva. me salen solo los metodos de una FIGURA
 		
-		//Para que reconozca a f como Circulo debo castearlo
-		//System.out.println(f.toString());
+		figuraNueva = primerCirculo;  //B) guardo un Circulo HIJO dentro de la Figura PADRE
+		//si hago figuraNueva. me salen solo los metodos de una FIGURA
 		
-		f=r1; //guardo un Cuadrado dentro de la Figura
-		//System.out.println(f.toString());
 		
-		f=c2;  //guardo un Circulo dentro de la Figura
-		//System.out.println(f.toString());
+		/* Vemos que al asignar un hijo dentro del padre pierde todas sus propiedades de hijo y se limita a comportarse como solamente como padre.
+		 * Para que reconozca en figuraNueva las propiedades de hijo debo hacer 
+		 * CASTING o REFUNDICION DE OBJETOS:
+		*/
 		
-		c.agregarFigura(f);
-		c.agregarFigura(c2);
-		c.agregarFigura(r1);
+		 Circulo segundoCirculo= (Circulo)figuraNueva;
+		//ahora si hago	 segundoCirculo. ya me salen todas las propiedades de un Circulo
+		 
+		 /*CUIDADO,
+		  *  en este caso figuraNueva se instancio como "new Circulo" y luego se CASTEO para que adquiera sus propiedades de hijo.
+		  * NO SE PODRIA HACER si figuraNueva hubiera sido instanciada como "new Figura" */
+		 
+		nuevoContenedor.agregarFigura(segundoCirculo);
+		nuevoContenedor.agregarFigura(primerCirculo);
+		nuevoContenedor.agregarFigura(primerCuadrado);
 		
 		Integer valorEsperado = 2;
-		assertEquals(valorEsperado, c.contarCirculos());
+		assertEquals(valorEsperado, nuevoContenedor.contarCirculos());
 		
 	}
 
